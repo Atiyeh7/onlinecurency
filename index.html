@@ -7,34 +7,30 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
     <header>
-        <h1>Worth is Relative</h1>
-    </header>
-    
+        <h1>Online Currency</h1>
     <main>
-    
         </div>
-        <!-- COMMENT -->
-        <img src="images/prayer/prayer1.JPG" alt="Image" style="display: block; margin: 20px auto;">
-        <img src="images/prayer/prayer2.JPG" alt="Image" style="display: block; margin: 20px auto;">
-        <img src="images/prayer/prayer3.JPG" alt="Image" style="display: block; margin: 20px auto;">
-        <img src="images/prayer/prayer4.JPG" alt="Image" style="display: block; margin: 20px auto;">
-        
-        <!--This Works (thumbnail w/ $sz=w1000 after immage ID)-->
-        <!-- <img src="https://drive.google.com/thumbnail?id=1LtWucY5ySeg3psbFBNFg7txBR8U3C3Xi&sz=w1000" alt="booyah"> -->
-    
-
-
-        <!-- METHODS THAT DIDN"T WORK
-        <img src="https://drive.google.com/uc?export=view&id=1LtWucY5ySeg3psbFBNFg7txBR8U3C3Xi" alt="UC EXPORT" />
-        <img src="https://drive.google.com/uc?id=1LtWucY5ySeg3psbFBNFg7txBR8U3C3Xi" alt="UC ID" />
-        <img src="https://drive.google.com/thumbnail?id=1LtWucY5ySeg3psbFBNFg7txBR8U3C3Xi" alt="National Flag of Bangladesh" width="800">
-                 -->
+      
+        <button class="toggle-btn" onclick="toggleImages()">🙏</button>
+        <div id="images" style="display: none;">
+            <!--This Works (thumbnail w/ &sz=w1000 after immage ID)-->
+            <img src="https://drive.google.com/thumbnail?id=1LtWucY5ySeg3psbFBNFg7txBR8U3C3Xi&sz=w400" alt="praying 1">
+            <img src="https://drive.google.com/thumbnail?id=12dbb4339f0pS89Pfxju4F_dr8_9A4Cx2&sz=w400" alt="praying 2">
+            <img src="https://drive.google.com/thumbnail?id=1m5XdCGvEyMIsavaVWyfA63IcVPvty_P4&sz=w400" alt="praying 3">
+        </div>
 
     </main>
-    
-    <footer>
-        <p>&copy; 2026 Online Currency. All rights reserved.</p>
-    </footer>
+    <script>
+        function toggleImages() {
+            var x = document.getElementById("images");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>

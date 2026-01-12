@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'HALCIT';
+    src: url('fonts/HALCIT__.ttf') format('truetype');
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,7 +10,7 @@
 }
 
 body {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'HALCIT', sans-serif;
     background-color: #f5f5f5;
 }
 
@@ -38,4 +43,37 @@ footer {
     text-align: center;
     padding: 15px;
     margin-top: 40px;
+}
+
+.toggle-btn {
+    background-color: black;
+    color: limegreen;
+    border: none;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    font-size: 30px;
+    cursor: pointer;
+    float: left;
+    margin: 10px;
+}
+
+@media (max-width: 600px) {
+    header {
+        font-size: 40px;
+        padding: 20px;
+    }
+    .toggle-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        margin: 5px;
+    }
+    main {
+        padding: 10px;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
 }
