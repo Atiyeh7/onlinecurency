@@ -60,7 +60,7 @@ footer {
 
 @media (max-width: 600px) {
     header {
-        font-size: 40px;
+        font-size: 30px;
         padding: 20px;
         font-family: 'HALCIT', sans-serif;
     }
@@ -74,7 +74,7 @@ footer {
         padding: 10px;
     }
     img {
-        max-width: 100%;
+        max-width: 50%;
         height: auto;
     }
 }
