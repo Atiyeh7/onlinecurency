@@ -58,6 +58,18 @@ footer {
     margin: 10px;
 }
 
+#images {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#images img {
+    margin: 10px;
+    max-width: 100%;
+    height: auto;
+}
+
 @media (max-width: 600px) {
     header {
         font-size: 10px;
