@@ -109,7 +109,8 @@ body {
 .image-gallery {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: flex-start;
+    padding: 10px;
 }
 
 .image-gallery img {
