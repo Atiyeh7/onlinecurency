@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="background-color: #f5f5dc;">
+    <h1>Portfolio</h1>
+    <div id="folders">
+        <button class="folder-btn" data-folder="Lamp">Lamp</button>
+        <button class="folder-btn" data-folder="Table">Table</button>
+        <button class="folder-btn" data-folder="big painting">Big Painting</button>
+        <button class="folder-btn" data-folder="ceramics">Ceramics</button>
+        <button class="folder-btn" data-folder="images">Images</button>
+        <button class="folder-btn" data-folder="paper prints">Paper Prints</button>
+        <button class="folder-btn" data-folder="wood sculpture">Wood Sculpture</button>
+    </div>
+    <button class="back-btn" onclick="window.location.href='index.html'">Back</button>
+    <script>
+        // Folder click to new page
+        document.querySelectorAll('.folder-btn').forEach(btn => {
+            btn.onclick = function() {
+                const folder = this.getAttribute('data-folder');
+                window.location.href = folder.replace(/\s+/g, '').toLowerCase() + '.html';
+            }
+        });
+    </script>
+</body>
+</html>

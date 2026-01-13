@@ -10,9 +10,24 @@
     <div class="welcome">Welcome</div>
     <div class="name">Atiyeh Assaf</div>
     <div class="portfolio">Portfolio</div>
-    <button id="viewPortfolio">View Portfolio</button>
 
-    <div id="modal" class="modal">
+    <!-- Fake Pop-up Modal -->
+    <div id="fakePopup" class="modal">
+        <div class="modal-content popup-content">
+            <span class="close-popup">&times;</span>
+            <h2 onclick="openModal()" style="color: red; font-size: 3em; text-align: center; cursor: pointer;">CLICK ME!!!</h2>
+            <p style="text-align: center; font-size: 1.5em;">Don't miss out! Click to explore!</p>
+        </div>
+    </div>
+
+    <!-- Second Pop-up Modal -->
+    <div id="secondPopup" class="modal">
+        <div class="modal-content second-popup-content">
+            <span class="close-second">&times;</span>
+            <h2 style="color: blue; font-size: 3em; text-align: center;">WAIT!!!</h2>
+            <p style="text-align: center; font-size: 1.5em;">You really don't want to miss this!</p>
+        </div>
+    </div>
         <div class="modal-content">
             <span class="close">&times;</span>
             <div id="folders">

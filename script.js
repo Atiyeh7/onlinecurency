@@ -1,29 +1,42 @@
-// Modal functionality
-const modal = document.getElementById('modal');
-const viewPortfolioBtn = document.getElementById('viewPortfolio');
-const closeBtn = document.querySelector('.close');
+// Fake popup
+const fakePopup = document.getElementById('fakePopup');
+const closePopup = document.querySelector('.close-popup');
+const secondPopup = document.getElementById('secondPopup');
+const closeSecond = document.querySelector('.close-second');
 
-// Open modal
-viewPortfolioBtn.onclick = function() {
-    modal.style.display = 'block';
+// Show fake popup on load with delay
+window.onload = function() {
+    setTimeout(() => {
+        fakePopup.style.display = 'block';
+    }, 3000); // 3 seconds delay
 }
 
-// Close modal
-closeBtn.onclick = function() {
-    modal.style.display = 'none';
+// Open portfolio page from first popup
+function openModal() {
+    fakePopup.style.display = 'none';
+    window.location.href = 'portfolio.html';
 }
 
-// Click outside modal
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = 'none';
+// Close first popup and show second
+closePopup.onclick = function() {
+    fakePopup.style.display = 'none';
+    secondPopup.style.display = 'block';
+}
+
+// Close second popup and reopen first (endless loop)
+closeSecond.onclick = function() {
+    secondPopup.style.display = 'none';
+    fakePopup.style.display = 'block';
+}
+
+// Click outside
+window.addEventListener('click', function(event) {
+    if (event.target == fakePopup) {
+        fakePopup.style.display = 'none';
+        secondPopup.style.display = 'block';
     }
-}
-
-// Folder click to new page
-document.querySelectorAll('.folder-btn').forEach(btn => {
-    btn.onclick = function() {
-        const folder = this.getAttribute('data-folder');
-        window.location.href = folder.replace(/\s+/g, '').toLowerCase() + '.html';
+    if (event.target == secondPopup) {
+        secondPopup.style.display = 'none';
+        fakePopup.style.display = 'block';
     }
 });
