@@ -118,3 +118,18 @@ body {
     height: auto;
     margin: 0.5%;
 }
+
+.back-btn {
+    background-color: #00008b;
+    color: #f5f5dc;
+    border: none;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    font-size: 16px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    font-family: 'BNMagnique', sans-serif;
+}
