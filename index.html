@@ -3,35 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Currency</title>
+    <title>Fresh Start</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="welcome">Welcome</div>
+    <div class="name">Atiyeh Assaf</div>
+    <div class="portfolio">Portfolio</div>
+    <button id="viewPortfolio">View Portfolio</button>
 
-    <header>
-        <h1>Online Currency</h1>
-    <main>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="folders">
+                <button class="folder-btn" data-folder="Lamp">Lamp</button>
+                <button class="folder-btn" data-folder="Table">Table</button>
+                <button class="folder-btn" data-folder="big painting">Big Painting</button>
+                <button class="folder-btn" data-folder="ceramics">Ceramics</button>
+                <button class="folder-btn" data-folder="images">Images</button>
+                <button class="folder-btn" data-folder="paper prints">Paper Prints</button>
+                <button class="folder-btn" data-folder="wood sculpture">Wood Sculpture</button>
+            </div>
+            <div id="images" style="display: none;">
+                <!-- Images will be loaded here -->
+            </div>
         </div>
-      
-        <button class="toggle-btn" onclick="toggleImages()">🙏</button>
-        <div id="images" style="display: none;">
-            <!--This Works (thumbnail w/ &sz=w1000 after immage ID)-->
-            <img src="https://drive.google.com/thumbnail?id=1LtWucY5ySeg3psbFBNFg7txBR8U3C3Xi&sz=w400" alt="praying 1">
-            <img src="https://drive.google.com/thumbnail?id=12dbb4339f0pS89Pfxju4F_dr8_9A4Cx2&sz=w400" alt="praying 2">
-            <img src="https://drive.google.com/thumbnail?id=1m5XdCGvEyMIsavaVWyfA63IcVPvty_P4&sz=w400" alt="praying 3">
-            <img src="https://drive.google.com/uc?export=view&id=1ci8QZ21aGBAqVIFPyaxFWn9Y0K7DbCNu" alt="praying 4">
-        </div>
+    </div>
 
-    </main>
-    <script>
-        function toggleImages() {
-            var x = document.getElementById("images");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
