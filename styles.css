@@ -271,6 +271,15 @@ body.portfolio-page {
     }
 }
 
+@keyframes scroll-right {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
 .ticker-container-top {
     position: fixed;
     top: 0;
@@ -283,4 +292,10 @@ body.portfolio-page {
     font-family: 'BNMagnique', sans-serif;
     font-size: 18px;
     z-index: 100;
+}
+
+.ticker-container-top .ticker-content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll-right 30s linear infinite;
 }
