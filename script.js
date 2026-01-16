@@ -11,22 +11,21 @@ window.onload = function() {
     }, 3000); // 3 seconds delay
 }
 
-// Open portfolio page from first popup
+// Open portfolio page when clicking ERROR
 function openModal() {
-    fakePopup.style.display = 'none';
     window.location.href = 'portfolio.html';
 }
 
-// Close first popup and show second
+// Close first popup and show second (endless loop)
 closePopup.onclick = function() {
     fakePopup.style.display = 'none';
-    window.location.href = 'portfolio.html';
+    secondPopup.style.display = 'block';
 }
 
-// Close second popup and go to portfolio
+// Close second popup and show first (endless loop)
 closeSecond.onclick = function() {
     secondPopup.style.display = 'none';
-    window.location.href = 'portfolio.html';
+    fakePopup.style.display = 'block';
 }
 
 // Click outside
