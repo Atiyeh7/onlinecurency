@@ -20,13 +20,13 @@ function openModal() {
 // Close first popup and show second
 closePopup.onclick = function() {
     fakePopup.style.display = 'none';
-    secondPopup.style.display = 'block';
+    window.location.href = 'portfolio.html';
 }
 
-// Close second popup and reopen first (endless loop)
+// Close second popup and go to portfolio
 closeSecond.onclick = function() {
     secondPopup.style.display = 'none';
-    fakePopup.style.display = 'block';
+    window.location.href = 'portfolio.html';
 }
 
 // Click outside
