@@ -155,9 +155,18 @@ body {
     color: black;
 }
 
+#folders {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
 .folder-btn {
-    background-color: #00008b;
-    color: #f5f5dc;
+    background-color: #08CB00;
+    color: #000000;
     border: none;
     padding: 10px;
     margin: 5px;
@@ -168,7 +177,7 @@ body {
 
 .folder-btn:hover {
     transform: scale(1.05);
-    background-color: #0000cd;
+    background-color: #06A000;
 }
 
 #images img {
