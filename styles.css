@@ -358,6 +358,15 @@ body.portfolio-page {
         width: 60%;
         max-width: 800px;
     }
+    
+    .back {
+        height: auto;
+        min-height: auto;
+    }
+    
+    .flipper {
+        display: inline-block;
+    }
 }
 
 /* Tablet adjustments if needed */
