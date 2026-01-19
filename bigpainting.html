@@ -6,10 +6,19 @@
     <title>Big Painting</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body style="background-color: #EEEEEE;">
-    <h1>Big Painting</h1>
-    <div class="image-gallery">
-        <img src="images/big painting/DSC_2494.NEF" alt="DSC_2494.NEF">
+<body style="background-color: #EEEEEE; display: block; padding: 20px 0;">
+    <h1 class="welcome" style="position: static; transform: none; margin: 20px auto 10px; animation: none; font-size: 16vw; display: block;">TITLED</h1>
+    <div class="image-gallery" style="max-width: 95%; margin: 0 auto; display: block; text-align: center;">
+        <div class="flip-container" onclick="this.classList.toggle('flipped');">
+            <div class="flipper">
+                <div class="front">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/d6gbwd8rketcuzl5rnhcm/bigpainting.jpg?rlkey=6ran87wrw1vl5yd0jpoz50k65&st=uu0gs662" alt="Big Painting" style="width: 100%; height: auto; display: block;">
+                </div>
+                <div class="back">
+                    <p>this painting was started as a living project, for months friends and family would come over and add to it little by little, when i decided to cover it with white paint and sand down certain parts to reveal the colors and history underneath. this piece is for me, it lives in my home in my bedroom, it reminds me that i am all of those who came before me. i am not only me but the combination of time and influence of others</p>
+                </div>
+            </div>
+        </div>
     </div>
     <button class="back-btn" onclick="window.location.href='portfolio.html'">Back</button>
 </body>
