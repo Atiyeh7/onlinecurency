@@ -6,15 +6,46 @@
     <title>Wood Sculpture</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body style="background-color: #EEEEEE;">
-    <h1>Wood Sculpture</h1>
-    <div class="image-gallery">
-        <img src="images/wood sculpture/DSC_2499.NEF" alt="DSC_2499.NEF">
-        <img src="images/wood sculpture/DSC_2500.NEF" alt="DSC_2500.NEF">
-        <img src="images/wood sculpture/DSC_2503.NEF" alt="DSC_2503.NEF">
-        <img src="images/wood sculpture/DSC_2505.NEF" alt="DSC_2505.NEF">
-        <img src="images/wood sculpture/DSC_2506.NEF" alt="DSC_2506.NEF">
+<body style="background-color: #EEEEEE; display: block; padding: 20px 0;">
+    <h1 style="color: #253900; font-size: 12vw; text-align: center; margin: 20px auto 20px; padding: 0 10px; white-space: nowrap;">In Opposition</h1>
+    <div class="image-gallery" style="flex-wrap: wrap; justify-content: center; max-width: 95%; margin: 0 auto;">
+        <img src="https://dl.dropbox.com/scl/fi/nlzou6fd9748in4o4s4mn/sculpture-1.jpg?rlkey=iz7v4p9755x3n69wotewvbcug&st=rlepmcd4" alt="Sculpture 1" style="width: 32%; margin: 0.5%;">
+        <img src="https://dl.dropbox.com/scl/fi/dwy0shcepqgntfdt3kefx/sculpture-2.jpg?rlkey=mez563ad6safttcjuduu12a4p&st=uhxmz35j" alt="Sculpture 2" style="width: 32%; margin: 0.5%;">
+        <img src="https://dl.dropbox.com/scl/fi/yszo9asyquvvximodjmh6/Sculpture-3.jpg?rlkey=01t9cuayue2v5ufujzeovg289&st=wggtx7ln" alt="Sculpture 3" style="width: 32%; margin: 0.5%;">
+        <img src="https://dl.dropbox.com/scl/fi/m1zurmbjhawwz5rk1i5c9/sculpture-4.jpg?rlkey=g8ufwvonjepexo37s0k7hq4n8&st=tzfbeumv" alt="Sculpture 4" style="width: 32%; margin: 0.5%;">
+        <img src="https://dl.dropbox.com/scl/fi/5lqg5vhyq2zrtnebjhorq/sculpture-5.jpg?rlkey=gsy9017ka4mdpevsdj2pjt2as&st=htpqdrac" alt="Sculpture 5" style="width: 32%; margin: 0.5%;">
+        <img src="https://dl.dropbox.com/scl/fi/ko2ge95xl5720oeoi5uyh/sculpture-6.jpg?rlkey=ufisecvzs8rxzduxsqd2r5z8s&st=n344k1op" alt="Sculpture 6" style="width: 32%; margin: 0.5%;">
     </div>
+    
+    <!-- Rotating sculpture animation -->
+    <div style="max-width: 600px; margin: 40px auto; text-align: center;">
+        <div id="sculptureRotation" style="position: relative; width: 100%; aspect-ratio: 1/1;">
+            <img src="https://dl.dropbox.com/scl/fi/nlzou6fd9748in4o4s4mn/sculpture-1.jpg?rlkey=iz7v4p9755x3n69wotewvbcug&st=rlepmcd4" class="rotation-frame" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0;">
+            <img src="https://dl.dropbox.com/scl/fi/dwy0shcepqgntfdt3kefx/sculpture-2.jpg?rlkey=mez563ad6safttcjuduu12a4p&st=uhxmz35j" class="rotation-frame" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0;">
+            <img src="https://dl.dropbox.com/scl/fi/yszo9asyquvvximodjmh6/Sculpture-3.jpg?rlkey=01t9cuayue2v5ufujzeovg289&st=wggtx7ln" class="rotation-frame" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0;">
+            <img src="https://dl.dropbox.com/scl/fi/m1zurmbjhawwz5rk1i5c9/sculpture-4.jpg?rlkey=g8ufwvonjepexo37s0k7hq4n8&st=tzfbeumv" class="rotation-frame" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0;">
+            <img src="https://dl.dropbox.com/scl/fi/5lqg5vhyq2zrtnebjhorq/sculpture-5.jpg?rlkey=gsy9017ka4mdpevsdj2pjt2as&st=htpqdrac" class="rotation-frame" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0;">
+            <img src="https://dl.dropbox.com/scl/fi/ko2ge95xl5720oeoi5uyh/sculpture-6.jpg?rlkey=ufisecvzs8rxzduxsqd2r5z8s&st=n344k1op" class="rotation-frame" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0;">
+        </div>
+    </div>
+    
+    <script>
+        // Rotating sculpture animation
+        const frames = document.querySelectorAll('.rotation-frame');
+        let currentFrame = 0;
+        
+        function rotateFrames() {
+            frames.forEach((frame, index) => {
+                frame.style.opacity = index === currentFrame ? '1' : '0';
+            });
+            currentFrame = (currentFrame + 1) % frames.length;
+        }
+        
+        // Start animation
+        rotateFrames();
+        setInterval(rotateFrames, 500); // Change frame every 500ms
+    </script>
+    
     <button class="back-btn" onclick="window.location.href='portfolio.html'">Back</button>
 </body>
 </html>
