@@ -326,6 +326,13 @@ body.portfolio-page {
 
 .front {
     z-index: 2;
+    display: block;
+}
+
+.front img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 .front::after {
@@ -364,6 +371,8 @@ body.portfolio-page {
     align-items: center;
     justify-content: center;
     min-height: 500px;
+    height: 100%;
+    overflow-y: auto;
 }
 
 .back p {
@@ -372,6 +381,8 @@ body.portfolio-page {
     line-height: 1.6;
     text-align: left;
     margin: 0;
+    max-height: 100%;
+    overflow-y: auto;
 }
 
 /* Mobile-first: Default styles above are for mobile */
