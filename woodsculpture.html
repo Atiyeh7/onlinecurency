@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         .sculpture-img-wrapper {
-            position: relative;
             width: 32%;
             margin: 0.5%;
             display: inline-block;
@@ -17,104 +16,43 @@
             width: 100%;
             display: block;
         }
-        
-        .sculpture-img-wrapper::after {
-            content: 'click to learn more';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(128, 128, 128, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'BNMagnique', sans-serif;
-            font-size: 2vw;
-            color: #EEEEEE;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-        
-        .sculpture-img-wrapper:hover::after {
-            opacity: 1;
-        }
-        
-        .sculpture-modal {
-            display: none;
-            position: fixed;
-            z-index: 100;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-        
-        .sculpture-modal-content {
-            background-color: #253900;
-            color: #EEEEEE;
-            margin: 5% auto;
-            padding: 40px;
-            width: 80%;
-            max-width: 800px;
-            border-radius: 0;
-            position: relative;
-            font-family: 'BNMagnique', sans-serif;
-        }
-        
-        .sculpture-close {
-            color: #08CB00;
-            float: right;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            line-height: 1;
-        }
-        
-        .sculpture-close:hover {
-            color: #EEEEEE;
-        }
-        
-        .sculpture-modal-content p {
-            font-size: 20px;
-            line-height: 1.6;
-            text-align: left;
-            margin: 20px 0 0 0;
-        }
     </style>
 </head>
-<body style="background-color: #EEEEEE; display: block; padding: 20px 0;">
-    <h1 style="color: #253900; font-size: 12vw; text-align: center; margin: 20px auto 20px; padding: 0 10px; white-space: nowrap;">In Opposition</h1>
+<body style="background-color: #EEEEEE; display: block; padding: 20px 0; font-family: 'BNMagnique', sans-serif;">
+    <h1 style="color: #253900; font-size: 12vw; text-align: center; margin: 20px auto 10px; padding: 0 10px; white-space: nowrap;">In Opposition</h1>
+    <p style="text-align: center; font-size: 18px; margin: 30px auto 20px; color: #000000;">Wood, Screws, Chain, 3' x 1.5'</p>
     
-    <!-- Modal for sculpture description -->
-    <div id="sculptureModal" class="sculpture-modal">
-        <div class="sculpture-modal-content">
-            <span class="sculpture-close">&times;</span>
-            <p>This sculpture is an exploration of material, shape, and tension. Made from cheap 2" x 3"s, it uses industrially produced wood that has been forced into rigid, standardized forms. That imposed rigidity is then used to remake the material back into an organic form. Although now it stands in opposition, twisted, strained, and resisting its own construction.
-The wood that is deliberately pushed beyond its natural state is re-glued, screwed, and bent back through extrusion and manipulation. The addition of the chain, hanging like Spanish moss just above the ground, adds to this tension, reasserting the forced contradiction between the organic and inorganic.</p>
+    <div class="image-gallery" style="flex-wrap: wrap; justify-content: center; max-width: 95%; margin: 0 auto;">
+        <div class="sculpture-img-wrapper">
+            <img src="https://dl.dropbox.com/scl/fi/nlzou6fd9748in4o4s4mn/sculpture-1.jpg?rlkey=iz7v4p9755x3n69wotewvbcug&st=rlepmcd4" alt="Sculpture 1">
+        </div>
+        <div class="sculpture-img-wrapper">
+            <img src="https://dl.dropbox.com/scl/fi/dwy0shcepqgntfdt3kefx/sculpture-2.jpg?rlkey=mez563ad6safttcjuduu12a4p&st=uhxmz35j" alt="Sculpture 2">
+        </div>
+        <div class="sculpture-img-wrapper">
+            <img src="https://dl.dropbox.com/scl/fi/yszo9asyquvvximodjmh6/Sculpture-3.jpg?rlkey=01t9cuayue2v5ufujzeovg289&st=wggtx7ln" alt="Sculpture 3">
+        </div>
+        <div class="sculpture-img-wrapper">
+            <img src="https://dl.dropbox.com/scl/fi/m1zurmbjhawwz5rk1i5c9/sculpture-4.jpg?rlkey=g8ufwvonjepexo37s0k7hq4n8&st=tzfbeumv" alt="Sculpture 4">
+        </div>
+        <div class="sculpture-img-wrapper">
+            <img src="https://dl.dropbox.com/scl/fi/5lqg5vhyq2zrtnebjhorq/sculpture-5.jpg?rlkey=gsy9017ka4mdpevsdj2pjt2as&st=htpqdrac" alt="Sculpture 5">
+        </div>
+        <div class="sculpture-img-wrapper">
+            <img src="https://dl.dropbox.com/scl/fi/ko2ge95xl5720oeoi5uyh/sculpture-6.jpg?rlkey=ufisecvzs8rxzduxsqd2r5z8s&st=n344k1op" alt="Sculpture 6">
         </div>
     </div>
     
-    <div class="image-gallery" style="flex-wrap: wrap; justify-content: center; max-width: 95%; margin: 0 auto;">
-        <div class="sculpture-img-wrapper" onclick="document.getElementById('sculptureModal').style.display='block'">
-            <img src="https://dl.dropbox.com/scl/fi/nlzou6fd9748in4o4s4mn/sculpture-1.jpg?rlkey=iz7v4p9755x3n69wotewvbcug&st=rlepmcd4" alt="Sculpture 1">
-        </div>
-        <div class="sculpture-img-wrapper" onclick="document.getElementById('sculptureModal').style.display='block'">
-            <img src="https://dl.dropbox.com/scl/fi/dwy0shcepqgntfdt3kefx/sculpture-2.jpg?rlkey=mez563ad6safttcjuduu12a4p&st=uhxmz35j" alt="Sculpture 2">
-        </div>
-        <div class="sculpture-img-wrapper" onclick="document.getElementById('sculptureModal').style.display='block'">
-            <img src="https://dl.dropbox.com/scl/fi/yszo9asyquvvximodjmh6/Sculpture-3.jpg?rlkey=01t9cuayue2v5ufujzeovg289&st=wggtx7ln" alt="Sculpture 3">
-        </div>
-        <div class="sculpture-img-wrapper" onclick="document.getElementById('sculptureModal').style.display='block'">
-            <img src="https://dl.dropbox.com/scl/fi/m1zurmbjhawwz5rk1i5c9/sculpture-4.jpg?rlkey=g8ufwvonjepexo37s0k7hq4n8&st=tzfbeumv" alt="Sculpture 4">
-        </div>
-        <div class="sculpture-img-wrapper" onclick="document.getElementById('sculptureModal').style.display='block'">
-            <img src="https://dl.dropbox.com/scl/fi/5lqg5vhyq2zrtnebjhorq/sculpture-5.jpg?rlkey=gsy9017ka4mdpevsdj2pjt2as&st=htpqdrac" alt="Sculpture 5">
-        </div>
-        <div class="sculpture-img-wrapper" onclick="document.getElementById('sculptureModal').style.display='block'">
-            <img src="https://dl.dropbox.com/scl/fi/ko2ge95xl5720oeoi5uyh/sculpture-6.jpg?rlkey=ufisecvzs8rxzduxsqd2r5z8s&st=n344k1op" alt="Sculpture 6">
+    <div style="max-width: 80%; margin: 40px auto; padding: 0 20px;">
+        <div style="border-top: 1px solid #000000; padding-top: 15px;">
+            <div onclick="toggleDescription()" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; border-bottom: 1px solid #000000; font-family: 'BNMagnique', sans-serif;">
+                <span style="font-size: 14px; font-weight: normal; color: #000000;">Description</span>
+                <span id="toggleIcon" style="font-size: 20px; color: #000000;">+</span>
+            </div>
+            <div id="descriptionContent" style="display: none; padding-top: 20px; font-family: 'BNMagnique', sans-serif;">
+                <p style="font-size: 16px; line-height: 1.6; color: #000000; text-align: left; margin-bottom: 15px;">This sculpture is an exploration of material, shape, and tension. Made from cheap 2" x 3"s, it uses industrially produced wood that has been forced into rigid, standardized forms. That imposed rigidity is then used to remake the material back into an organic form. Although now it stands in opposition, twisted, strained, and resisting its own construction.</p>
+                <p style="font-size: 16px; line-height: 1.6; color: #000000; text-align: left; margin-bottom: 0;">The wood that is deliberately pushed beyond its natural state is re-glued, screwed, and bent back through extrusion and manipulation. The addition of the chain, hanging like Spanish moss just above the ground, adds to this tension, reasserting the forced contradiction between the organic and inorganic.</p>
+            </div>
         </div>
     </div>
     
@@ -131,17 +69,15 @@ The wood that is deliberately pushed beyond its natural state is re-glued, screw
     </div>
     
     <script>
-        // Modal functionality
-        const modal = document.getElementById('sculptureModal');
-        const closeBtn = document.querySelector('.sculpture-close');
-        
-        closeBtn.onclick = function() {
-            modal.style.display = 'none';
-        }
-        
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = 'none';
+        function toggleDescription() {
+            const content = document.getElementById('descriptionContent');
+            const icon = document.getElementById('toggleIcon');
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+                icon.textContent = '−';
+            } else {
+                content.style.display = 'none';
+                icon.textContent = '+';
             }
         }
         
