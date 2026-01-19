@@ -321,18 +321,18 @@ body.portfolio-page {
 .front, .back {
     width: 100%;
     backface-visibility: hidden;
-    position: relative;
 }
 
 .front {
     z-index: 2;
-    display: block;
+    transform: rotateY(0deg);
 }
 
 .front img {
     display: block;
     width: 100%;
     height: auto;
+    vertical-align: top;
 }
 
 .front::after {
@@ -362,6 +362,8 @@ body.portfolio-page {
     position: absolute;
     top: 0;
     left: 0;
+    bottom: 0;
+    right: 0;
     transform: rotateY(180deg);
     background-color: #253900;
     color: #EEEEEE;
@@ -370,8 +372,6 @@ body.portfolio-page {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 500px;
-    height: 100%;
     overflow-y: auto;
 }
 
