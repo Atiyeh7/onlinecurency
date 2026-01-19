@@ -350,3 +350,19 @@ body.portfolio-page {
     text-align: left;
     margin: 0;
 }
+
+/* Mobile-first: Default styles above are for mobile */
+/* Desktop styles: Make flip container smaller on larger screens */
+@media (min-width: 768px) {
+    .flip-container {
+        width: 60%;
+        max-width: 800px;
+    }
+}
+
+/* Tablet adjustments if needed */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .flip-container {
+        width: 70%;
+    }
+}
