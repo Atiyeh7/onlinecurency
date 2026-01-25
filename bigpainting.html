@@ -39,6 +39,47 @@
                 icon.textContent = '+';
             }
         }
+        
+        // Magnifying glass effect for the painting image
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create magnifier element
+            const magnifier = document.createElement('div');
+            magnifier.className = 'magnifier';
+            document.body.appendChild(magnifier);
+            
+            // Get all images on the page
+            const images = document.querySelectorAll('img');
+            
+            images.forEach(img => {
+                // Add magnify-enabled class to images
+                img.classList.add('magnify-enabled');
+                
+                img.addEventListener('mouseenter', function() {
+                    magnifier.style.display = 'block';
+                });
+                
+                img.addEventListener('mouseleave', function() {
+                    magnifier.style.display = 'none';
+                });
+                
+                img.addEventListener('mousemove', function(e) {
+                    const rect = img.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    // Position magnifier at cursor
+                    magnifier.style.left = e.pageX - 75 + 'px';
+                    magnifier.style.top = e.pageY - 75 + 'px';
+                    
+                    // Calculate background position for zoomed image
+                    const xPercent = (x / rect.width) * 100;
+                    const yPercent = (y / rect.height) * 100;
+                    
+                    magnifier.style.backgroundImage = `url('${img.src}')`;
+                    magnifier.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
+                });
+            });
+        });
     </script>
     
     <button class="back-btn" onclick="window.location.href='portfolio.html'">Back</button>
