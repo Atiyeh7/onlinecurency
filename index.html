@@ -9,11 +9,29 @@
     <title>My Currency$</title>
     <link rel="stylesheet" href="styles.css?v=2">
 </head>
-<body style="font-family: 'BNMagnique', sans-serif;">
-    <div class="welcome">Welcome</div>
-    <div class="name">Atiyeh Assaf</div>
-    <div class="portfolio">Portfolio</div>
+<body style="font-family: 'BNDunk', sans-serif;">
 
+    <div class="welcome" id="typewriter"></div>
+
+    <script>
+        // Typewriter effect
+        const text = "Atiyeh Assaf, works, thoughts,";
+        const element = document.getElementById('typewriter');
+        let index = 0;
+
+        function typeWriter() {
+            if (index < text.length) {
+                element.textContent += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, 100); // Speed of typing (100ms per character)
+            }
+        }
+
+        // Start typing when page loads
+        window.addEventListener('load', function() {
+            setTimeout(typeWriter, 500); // Delay before starting
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
