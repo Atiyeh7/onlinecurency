@@ -15,14 +15,19 @@
 
     <script>
         // Typewriter effect
-        const text = "Atiyeh Assaf, works, thoughts,";
+        const text = "atiyeh assaf,<br>works,<br>thoughts";
         const element = document.getElementById('typewriter');
         let index = 0;
 
         function typeWriter() {
             if (index < text.length) {
-                element.textContent += text.charAt(index);
-                index++;
+                if (text.substr(index, 4) === '<br>') {
+                    element.innerHTML += '<br>';
+                    index += 4;
+                } else {
+                    element.innerHTML += text.charAt(index);
+                    index++;
+                }
                 setTimeout(typeWriter, 100); // Speed of typing (100ms per character)
             }
         }
