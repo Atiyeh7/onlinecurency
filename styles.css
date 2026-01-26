@@ -27,7 +27,7 @@ body.portfolio-page {
 }
 
 .welcome {
-    font-size: 8vw; /* smaller to fit all lines on screen */
+    font-size: 3vw; /* smaller to fit all lines on screen */
     color: #253900; /* dark green */
     text-align: right;
     position: absolute;
