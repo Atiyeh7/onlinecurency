@@ -13,6 +13,65 @@
 
     <div class="welcome" id="typewriter"></div>
 
+    <div class="floating-folders" id="floatingFolders">
+        <a href="lamp.html" class="folder-icon" data-label="Lamp">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 20 L5 75 L95 75 L95 20 Z" fill="#5DADE2"/>
+                <path d="M5 20 L30 10 L45 10 L50 20 Z" fill="#3498DB"/>
+                <path d="M5 20 L95 20 L95 25 L5 25 Z" fill="#2980B9"/>
+            </svg>
+            <span>Lamp</span>
+        </a>
+        <a href="table.html" class="folder-icon" data-label="Table">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 20 L5 75 L95 75 L95 20 Z" fill="#5DADE2"/>
+                <path d="M5 20 L30 10 L45 10 L50 20 Z" fill="#3498DB"/>
+                <path d="M5 20 L95 20 L95 25 L5 25 Z" fill="#2980B9"/>
+            </svg>
+            <span>Table</span>
+        </a>
+        <a href="bigpainting.html" class="folder-icon" data-label="Mixed Media">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 20 L5 75 L95 75 L95 20 Z" fill="#5DADE2"/>
+                <path d="M5 20 L30 10 L45 10 L50 20 Z" fill="#3498DB"/>
+                <path d="M5 20 L95 20 L95 25 L5 25 Z" fill="#2980B9"/>
+            </svg>
+            <span>Mixed Media</span>
+        </a>
+        <a href="ceramics.html" class="folder-icon" data-label="Ceramics">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 20 L5 75 L95 75 L95 20 Z" fill="#5DADE2"/>
+                <path d="M5 20 L30 10 L45 10 L50 20 Z" fill="#3498DB"/>
+                <path d="M5 20 L95 20 L95 25 L5 25 Z" fill="#2980B9"/>
+            </svg>
+            <span>Ceramics</span>
+        </a>
+        <a href="images.html" class="folder-icon" data-label="Images">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 20 L5 75 L95 75 L95 20 Z" fill="#5DADE2"/>
+                <path d="M5 20 L30 10 L45 10 L50 20 Z" fill="#3498DB"/>
+                <path d="M5 20 L95 20 L95 25 L5 25 Z" fill="#2980B9"/>
+            </svg>
+            <span>Images</span>
+        </a>
+        <a href="paperprints.html" class="folder-icon" data-label="Paper Prints">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 20 L5 75 L95 75 L95 20 Z" fill="#5DADE2"/>
+                <path d="M5 20 L30 10 L45 10 L50 20 Z" fill="#3498DB"/>
+                <path d="M5 20 L95 20 L95 25 L5 25 Z" fill="#2980B9"/>
+            </svg>
+            <span>Paper Prints</span>
+        </a>
+        <a href="woodsculpture.html" class="folder-icon" data-label="Wood Sculpture">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 20 L5 75 L95 75 L95 20 Z" fill="#5DADE2"/>
+                <path d="M5 20 L30 10 L45 10 L50 20 Z" fill="#3498DB"/>
+                <path d="M5 20 L95 20 L95 25 L5 25 Z" fill="#2980B9"/>
+            </svg>
+            <span>Wood Sculpture</span>
+        </a>
+    </div>
+
     <script>
         // Typewriter effect
         const text = "Atiyeh Assaf,<br>works,<br>thoughts";
@@ -35,6 +94,27 @@
         // Start typing when page loads
         window.addEventListener('load', function() {
             setTimeout(typeWriter, 500); // Delay before starting
+            // Show folders after typewriter completes
+            setTimeout(function() {
+                document.getElementById('floatingFolders').style.opacity = '1';
+            }, 500 + (text.replace(/<br>/g, '').length * 100) + 500);
+        });
+
+        // Scroll-triggered folder animations
+        window.addEventListener('scroll', function() {
+            const folders = document.querySelectorAll('.folder-icon');
+            folders.forEach((folder, index) => {
+                const rect = folder.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                
+                if (isVisible) {
+                    folder.style.opacity = '1';
+                    folder.style.transform = 'translateY(0) scale(1)';
+                } else {
+                    folder.style.opacity = '0.3';
+                    folder.style.transform = 'translateY(20px) scale(0.9)';
+                }
+            });
         });
     </script>
     <script src="script.js"></script>
