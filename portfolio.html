@@ -14,13 +14,62 @@
     </div>
     <h1 class="welcome">MY CURRENCY</h1>
     <div id="folders">
-        <button class="folder-btn" data-folder="Lamp">Lamp</button>
-        <button class="folder-btn" data-folder="Table">Table</button>
-        <button class="folder-btn" data-folder="big painting">Mixed Media on Canvas</button>
-        <button class="folder-btn" data-folder="ceramics">Ceramics</button>
-        <button class="folder-btn" data-folder="images">Images</button>
-        <button class="folder-btn" data-folder="paper prints">Paper Prints</button>
-        <button class="folder-btn" data-folder="wood sculpture">Wood, Screws, Chain</button>
+        <a href="lamp.html" class="folder-icon portfolio-folder">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 20 L5 75 L95 75 L95 20 Z" fill="#5DADE2"/>
+                <path d="M5 20 L30 10 L45 10 L50 20 Z" fill="#3498DB"/>
+                <path d="M5 20 L95 20 L95 25 L5 25 Z" fill="#2980B9"/>
+            </svg>
+            <span>Lamp</span>
+        </a>
+        <a href="table.html" class="folder-icon portfolio-folder">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 20 L5 75 L95 75 L95 20 Z" fill="#5DADE2"/>
+                <path d="M5 20 L30 10 L45 10 L50 20 Z" fill="#3498DB"/>
+                <path d="M5 20 L95 20 L95 25 L5 25 Z" fill="#2980B9"/>
+            </svg>
+            <span>Table</span>
+        </a>
+        <a href="bigpainting.html" class="folder-icon portfolio-folder">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 20 L5 75 L95 75 L95 20 Z" fill="#5DADE2"/>
+                <path d="M5 20 L30 10 L45 10 L50 20 Z" fill="#3498DB"/>
+                <path d="M5 20 L95 20 L95 25 L5 25 Z" fill="#2980B9"/>
+            </svg>
+            <span>Mixed Media on Canvas</span>
+        </a>
+        <a href="ceramics.html" class="folder-icon portfolio-folder">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 20 L5 75 L95 75 L95 20 Z" fill="#5DADE2"/>
+                <path d="M5 20 L30 10 L45 10 L50 20 Z" fill="#3498DB"/>
+                <path d="M5 20 L95 20 L95 25 L5 25 Z" fill="#2980B9"/>
+            </svg>
+            <span>Ceramics</span>
+        </a>
+        <a href="images.html" class="folder-icon portfolio-folder">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 20 L5 75 L95 75 L95 20 Z" fill="#5DADE2"/>
+                <path d="M5 20 L30 10 L45 10 L50 20 Z" fill="#3498DB"/>
+                <path d="M5 20 L95 20 L95 25 L5 25 Z" fill="#2980B9"/>
+            </svg>
+            <span>Images</span>
+        </a>
+        <a href="paperprints.html" class="folder-icon portfolio-folder">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 20 L5 75 L95 75 L95 20 Z" fill="#5DADE2"/>
+                <path d="M5 20 L30 10 L45 10 L50 20 Z" fill="#3498DB"/>
+                <path d="M5 20 L95 20 L95 25 L5 25 Z" fill="#2980B9"/>
+            </svg>
+            <span>Paper Prints</span>
+        </a>
+        <a href="woodsculpture.html" class="folder-icon portfolio-folder">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 20 L5 75 L95 75 L95 20 Z" fill="#5DADE2"/>
+                <path d="M5 20 L30 10 L45 10 L50 20 Z" fill="#3498DB"/>
+                <path d="M5 20 L95 20 L95 25 L5 25 Z" fill="#2980B9"/>
+            </svg>
+            <span>Wood, Screws, Chain</span>
+        </a>
     </div>
     
     <button class="back-btn" onclick="window.location.href='index.html'">Main</button>
@@ -31,13 +80,7 @@
         </div>
     </div>
     <script>
-        // Folder click to new page
-        document.querySelectorAll('.folder-btn').forEach(btn => {
-            btn.onclick = function() {
-                const folder = this.getAttribute('data-folder');
-                window.location.href = folder.replace(/\s+/g, '').toLowerCase() + '.html';
-            }
-        });
+        // Folder icons are now direct links, no need for click handlers
     </script>
 </body>
 </html>

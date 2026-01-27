@@ -208,6 +208,23 @@ body.portfolio-page {
     padding: 0 20px;
 }
 
+.portfolio-folder {
+    position: static !important;
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    margin: 10px;
+}
+
+.portfolio-folder svg {
+    width: 50px;
+    height: 40px;
+}
+
+.portfolio-folder span {
+    font-size: 11px;
+}
+
 .folder-btn {
     background-color: #08CB00;
     color: #000000;
