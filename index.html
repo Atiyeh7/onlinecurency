@@ -94,21 +94,28 @@
         // Start typing when page loads
         window.addEventListener('load', function() {
             setTimeout(typeWriter, 500); // Delay before starting
-            // Bring text into focus after typewriter completes
-            setTimeout(function() {
-                element.classList.add('focused');
-            }, 500 + (text.length * 100));
             // Show folders after typewriter completes
             setTimeout(function() {
                 document.getElementById('floatingFolders').style.opacity = '1';
             }, 500 + (text.length * 100) + 500);
         });
 
-        // Scroll-triggered folder animations
+        // Blur/focus text based on scroll position
         window.addEventListener('scroll', function() {
+            const scrollY = window.scrollY;
+            const element = document.getElementById('typewriter');
+            
+            if (scrollY > 100) {
+                // Scrolled down - make text clear
+                element.classList.add('focused');
+            } else {
+                // At top - make text blurry
+                element.classList.remove('focused');
+            }
+            
+            // Folder scroll animations
             const folders = document.querySelectorAll('.folder-icon');
             const windowHeight = window.innerHeight;
-            const scrollY = window.scrollY;
             
             folders.forEach((folder, index) => {
                 const rect = folder.getBoundingClientRect();
