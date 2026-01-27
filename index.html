@@ -30,13 +30,13 @@
             </svg>
             <span>Table</span>
         </a>
-        <a href="bigpainting.html" class="folder-icon" data-label="Mixed Media">
+        <a href="bigpainting.html" class="folder-icon" data-label="Mixed Media on Canvas">
             <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5 20 L5 75 L95 75 L95 20 Z" fill="#5DADE2"/>
                 <path d="M5 20 L30 10 L45 10 L50 20 Z" fill="#3498DB"/>
                 <path d="M5 20 L95 20 L95 25 L5 25 Z" fill="#2980B9"/>
             </svg>
-            <span>Mixed Media</span>
+            <span>Mixed Media on Canvas</span>
         </a>
         <a href="ceramics.html" class="folder-icon" data-label="Ceramics">
             <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
@@ -62,19 +62,19 @@
             </svg>
             <span>Paper Prints</span>
         </a>
-        <a href="woodsculpture.html" class="folder-icon" data-label="Wood Sculpture">
+        <a href="woodsculpture.html" class="folder-icon" data-label="Wood, Screws, Chain">
             <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5 20 L5 75 L95 75 L95 20 Z" fill="#5DADE2"/>
                 <path d="M5 20 L30 10 L45 10 L50 20 Z" fill="#3498DB"/>
                 <path d="M5 20 L95 20 L95 25 L5 25 Z" fill="#2980B9"/>
             </svg>
-            <span>Wood Sculpture</span>
+            <span>Wood, Screws, Chain</span>
         </a>
     </div>
 
     <script>
         // Typewriter effect
-        const text = "Atiyeh Assaf,<br>works,<br>thoughts";
+        const text = "ATIYEH ASSAF";
         const element = document.getElementById('typewriter');
         let index = 0;
 
@@ -103,19 +103,32 @@
         // Scroll-triggered folder animations
         window.addEventListener('scroll', function() {
             const folders = document.querySelectorAll('.folder-icon');
+            const windowHeight = window.innerHeight;
+            const scrollY = window.scrollY;
+            
             folders.forEach((folder, index) => {
                 const rect = folder.getBoundingClientRect();
-                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                const folderTop = rect.top + scrollY;
+                const folderBottom = folderTop + rect.height;
                 
-                if (isVisible) {
+                // Calculate if folder is in the visible "sweet spot"
+                const visibleTop = scrollY + windowHeight * 0.3;
+                const visibleBottom = scrollY + windowHeight * 0.7;
+                
+                if (folderTop > visibleTop && folderTop < visibleBottom) {
+                    // Folder is in view - appear
                     folder.style.opacity = '1';
                     folder.style.transform = 'translateY(0) scale(1)';
                 } else {
-                    folder.style.opacity = '0.3';
-                    folder.style.transform = 'translateY(20px) scale(0.9)';
+                    // Folder is out of view - disappear
+                    folder.style.opacity = '0';
+                    folder.style.transform = 'translateY(50px) scale(0.5)';
                 }
             });
         });
+        
+        // Trigger scroll event on load
+        window.dispatchEvent(new Event('scroll'));
     </script>
     <script src="script.js"></script>
 </body>

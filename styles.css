@@ -13,10 +13,8 @@ body {
     background-color: #EEEEEE;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    min-height: 300vh;
+    display: block;
     position: relative;
     overflow-x: hidden;
 }
@@ -28,16 +26,22 @@ body.portfolio-page {
 }
 
 .welcome {
-    font-size: 3vw; /* smaller to fit all lines on screen */
+    font-size: 8vw;
     color: #253900; /* dark green */
-    text-align: right;
-    position: absolute;
-    top: 30%;
-    right: 5%;
-    white-space: normal;
+    text-align: center;
+    position: sticky;
+    top: 10px;
+    left: 0;
+    right: 0;
+    margin-top: 30vh;
+    width: 100%;
+    white-space: nowrap;
     animation: none;
     font-weight: bold;
     line-height: 1.1;
+    z-index: 10;
+    background-color: transparent;
+    padding: 10px;
 }
 
 .portfolio-page .welcome {
@@ -52,16 +56,12 @@ body.portfolio-page {
 .floating-folders {
     position: absolute;
     top: 55%;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    max-width: 90%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 200vh;
     opacity: 0;
     transition: opacity 1s ease-in;
-    padding: 20px;
 }
 
 .folder-icon {
@@ -70,22 +70,53 @@ body.portfolio-page {
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    transition: all 0.5s ease;
-    opacity: 0.3;
+    transition: all 0.6s ease;
+    opacity: 0;
+    transform: translateY(50px) scale(0.5);
+    position: absolute;
     animation: float 3s ease-in-out infinite;
 }
 
-.folder-icon:nth-child(1) { animation-delay: 0s; }
-.folder-icon:nth-child(2) { animation-delay: 0.3s; }
-.folder-icon:nth-child(3) { animation-delay: 0.6s; }
-.folder-icon:nth-child(4) { animation-delay: 0.9s; }
-.folder-icon:nth-child(5) { animation-delay: 1.2s; }
-.folder-icon:nth-child(6) { animation-delay: 1.5s; }
-.folder-icon:nth-child(7) { animation-delay: 1.8s; }
+/* Zigzag positioning */
+.folder-icon:nth-child(1) { 
+    left: 10%;
+    top: 0;
+    animation-delay: 0s; 
+}
+.folder-icon:nth-child(2) { 
+    right: 10%;
+    top: 20vh;
+    animation-delay: 0.3s; 
+}
+.folder-icon:nth-child(3) { 
+    left: 15%;
+    top: 40vh;
+    animation-delay: 0.6s; 
+}
+.folder-icon:nth-child(4) { 
+    right: 15%;
+    top: 60vh;
+    animation-delay: 0.9s; 
+}
+.folder-icon:nth-child(5) { 
+    left: 20%;
+    top: 80vh;
+    animation-delay: 1.2s; 
+}
+.folder-icon:nth-child(6) { 
+    right: 20%;
+    top: 100vh;
+    animation-delay: 1.5s; 
+}
+.folder-icon:nth-child(7) { 
+    left: 25%;
+    top: 120vh;
+    animation-delay: 1.8s; 
+}
 
 .folder-icon svg {
-    width: 80px;
-    height: 64px;
+    width: 40px;
+    height: 32px;
     filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
     transition: transform 0.3s ease;
 }
@@ -95,9 +126,9 @@ body.portfolio-page {
 }
 
 .folder-icon span {
-    margin-top: 8px;
+    margin-top: 5px;
     font-family: 'BNMagnique', sans-serif;
-    font-size: 14px;
+    font-size: 10px;
     color: #253900;
     font-weight: bold;
     text-align: center;
