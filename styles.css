@@ -42,6 +42,12 @@ body.portfolio-page {
     z-index: 10;
     background-color: transparent;
     padding: 10px;
+    filter: blur(8px);
+    transition: filter 2s ease;
+}
+
+.welcome.focused {
+    filter: blur(0);
 }
 
 .portfolio-page .welcome {

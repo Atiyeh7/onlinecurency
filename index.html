@@ -94,10 +94,14 @@
         // Start typing when page loads
         window.addEventListener('load', function() {
             setTimeout(typeWriter, 500); // Delay before starting
+            // Bring text into focus after typewriter completes
+            setTimeout(function() {
+                element.classList.add('focused');
+            }, 500 + (text.length * 100));
             // Show folders after typewriter completes
             setTimeout(function() {
                 document.getElementById('floatingFolders').style.opacity = '1';
-            }, 500 + (text.replace(/<br>/g, '').length * 100) + 500);
+            }, 500 + (text.length * 100) + 500);
         });
 
         // Scroll-triggered folder animations
