@@ -72,6 +72,27 @@
         </a>
     </div>
 
+    <div class="would-you-rather-game" id="gameContainer">
+        <div class="game-window">
+            <div class="game-header">
+                <div class="window-buttons">
+                    <span class="btn-close"></span>
+                    <span class="btn-minimize"></span>
+                    <span class="btn-maximize"></span>
+                </div>
+                <div class="game-title">Would You Rather?</div>
+            </div>
+            <div class="game-content">
+                <h2 id="questionText">Would you rather...</h2>
+                <div class="options">
+                    <button class="option-btn option-a" id="optionA"></button>
+                    <span class="vs">OR</span>
+                    <button class="option-btn option-b" id="optionB"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Typewriter effect
         const text = "ATIYEH ASSAF";
@@ -140,6 +161,55 @@
         
         // Trigger scroll event on load
         window.dispatchEvent(new Event('scroll'));
+
+        // Would You Rather Game
+        const questions = [
+            { a: "Be rich", b: "Be poor" },
+            { a: "Have $1 million", b: "Be poor" },
+            { a: "Win the lottery", b: "Be poor" },
+            { a: "Never pay rent", b: "Be poor" },
+            { a: "Own a mansion", b: "Be poor" },
+            { a: "Have unlimited money", b: "Be poor" },
+            { a: "Get paid to sleep", b: "Be poor" },
+            { a: "Find $100 every day", b: "Be poor" },
+            { a: "Never work again", b: "Be poor" },
+            { a: "Have a trust fund", b: "Be poor" },
+            { a: "Own a private jet", b: "Be poor" },
+            { a: "Get free money forever", b: "Be poor" },
+            { a: "Have a yacht", b: "Be poor" },
+            { a: "Never pay taxes", b: "Be poor" },
+            { a: "Own 100 properties", b: "Be poor" },
+            { a: "Have a gold card", b: "Be poor" },
+            { a: "Get $10k monthly", b: "Be poor" },
+            { a: "Own a bank", b: "Be poor" },
+            { a: "Print money legally", b: "Be poor" },
+            { a: "Inherit millions", b: "Be poor" }
+        ];
+
+        let currentQuestionIndex = Math.floor(Math.random() * questions.length);
+
+        function loadQuestion() {
+            const question = questions[currentQuestionIndex];
+            document.getElementById('optionA').textContent = question.a;
+            document.getElementById('optionB').textContent = question.b;
+        }
+
+        function nextQuestion() {
+            // Get a random question that's not the current one
+            let newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * questions.length);
+            } while (newIndex === currentQuestionIndex && questions.length > 1);
+            
+            currentQuestionIndex = newIndex;
+            loadQuestion();
+        }
+
+        document.getElementById('optionA').addEventListener('click', nextQuestion);
+        document.getElementById('optionB').addEventListener('click', nextQuestion);
+
+        // Load first question
+        loadQuestion();
     </script>
     <script src="script.js"></script>
 </body>
