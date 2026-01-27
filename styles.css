@@ -481,11 +481,9 @@ body.portfolio-page {
 
 /* Would You Rather Game Styles */
 .would-you-rather-game {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 400px;
+    position: relative;
+    margin: 150vh auto 20px;
+    width: 500px;
     padding: 0;
 }
 
@@ -499,7 +497,7 @@ body.portfolio-page {
 
 .game-header {
     background: linear-gradient(to bottom, #ECECEC 0%, #D4D4D4 100%);
-    padding: 3px 8px;
+    padding: 4px 10px;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #A0A0A0;
@@ -507,13 +505,13 @@ body.portfolio-page {
 
 .window-buttons {
     display: flex;
-    gap: 4px;
-    margin-right: 8px;
+    gap: 5px;
+    margin-right: 10px;
 }
 
 .window-buttons span {
-    width: 8px;
-    height: 8px;
+    width: 9px;
+    height: 9px;
     border-radius: 50%;
     display: inline-block;
 }
@@ -535,46 +533,46 @@ body.portfolio-page {
 
 .game-title {
     font-family: 'BNMagnique', sans-serif;
-    font-size: 9px;
+    font-size: 10px;
     color: #4A4A4A;
     font-weight: bold;
 }
 
 .game-content {
-    padding: 8px 12px;
+    padding: 12px 16px;
     text-align: center;
 }
 
 .game-content h2 {
     font-family: 'BNMagnique', sans-serif;
-    font-size: 10px;
+    font-size: 12px;
     color: #253900;
-    margin: 0 0 6px 0;
+    margin: 0 0 8px 0;
 }
 
 .options {
     display: flex;
     flex-direction: row;
-    gap: 8px;
+    gap: 10px;
     align-items: center;
     justify-content: center;
 }
 
 .vs {
     font-family: 'BNMagnique', sans-serif;
-    font-size: 9px;
+    font-size: 10px;
     color: #666;
     font-weight: bold;
-    margin: 0 4px;
+    margin: 0 5px;
 }
 
 .option-btn {
     background: linear-gradient(to bottom, #FFFFFF 0%, #E5E5E5 100%);
     border: 1px solid #B8B8B8;
     border-radius: 3px;
-    padding: 6px 12px;
+    padding: 8px 16px;
     font-family: 'BNMagnique', sans-serif;
-    font-size: 10px;
+    font-size: 11px;
     color: #000;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -602,4 +600,21 @@ body.portfolio-page {
 
 .option-b {
     border-left: 2px solid #253900;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .would-you-rather-game {
+        width: 90%;
+        max-width: 400px;
+    }
+    
+    .option-btn {
+        font-size: 10px;
+        padding: 6px 12px;
+    }
+    
+    .game-content h2 {
+        font-size: 10px;
+    }
 }
