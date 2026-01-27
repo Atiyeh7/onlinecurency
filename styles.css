@@ -44,16 +44,12 @@ body.portfolio-page {
     padding: 10px;
 }
 
-.welcome.focused {
-    filter: blur(0);
-}
-
-body:not(.portfolio-page) .welcome {
+.home-page .welcome {
     filter: blur(8px);
     transition: filter 2s ease;
 }
 
-body:not(.portfolio-page) .welcome.focused {
+.home-page .welcome.focused {
     filter: blur(0);
 }
 
@@ -63,7 +59,6 @@ body:not(.portfolio-page) .welcome.focused {
     font-size: 12vw;
     margin: 30px auto 20px;
     animation: none;
-    filter: none;
 }
 
 /* Floating Folders Styles */
