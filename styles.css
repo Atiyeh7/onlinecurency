@@ -279,11 +279,12 @@ body.portfolio-page {
     height: 80px;
     font-size: 16px;
     position: fixed;
-    bottom: 20px;
+    bottom: 80px;
     right: 20px;
     cursor: pointer;
     font-family: 'BNMagnique', sans-serif;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 200;
 }
 
 .back-btn:hover {

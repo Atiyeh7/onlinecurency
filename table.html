@@ -5,15 +5,237 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Table</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .table-img-wrapper {
+            width: 48%;
+            margin: 1%;
+            display: inline-block;
+            vertical-align: top;
+            cursor: pointer;
+        }
+        
+        .table-img-wrapper img {
+            width: 100%;
+            display: block;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            filter: grayscale(20%);
+        }
+        
+        .table-img-wrapper:hover img {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+        
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 10001;
+        }
+        
+        .lightbox-close:hover {
+            color: #ccc;
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 60px;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+        
+        .lightbox-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .lightbox-prev {
+            left: 20px;
+        }
+        
+        .lightbox-next {
+            right: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .table-img-wrapper {
+                width: 98%;
+            }
+        }
+    </style>
 </head>
-<body style="background-color: #EEEEEE; font-family: 'BNMagnique', sans-serif;">
-    <h1>Table</h1>
-    <div class="image-gallery">
-        <img src="images/Table/DSC_2509.NEF" alt="DSC_2509.NEF">
-        <img src="images/Table/DSC_2513.NEF" alt="DSC_2513.NEF">
-        <img src="images/Table/DSC_2514.NEF" alt="DSC_2514.NEF">
-        <img src="images/Table/DSC_2515.NEF" alt="DSC_2515.NEF">
+<body style="background-color: #EEEEEE; display: block; padding: 20px 0; font-family: 'BNMagnique', sans-serif; overflow-x: hidden;">
+    <h1 style="color: #253900; font-size: 12vw; text-align: center; margin: 20px auto 10px; padding: 0 10px; white-space: nowrap;">My Table</h1>
+    <p style="text-align: center; font-size: 18px; margin: 30px auto 20px; color: #000000;">Reclaimed Cedar</p>
+    
+    <!-- Rotating table animation at top -->
+    <div style="max-width: 600px; margin: 40px auto; text-align: center;">
+        <div id="tableRotation" style="position: relative; width: 100%; aspect-ratio: 1/1;">
+            <img src="https://dl.dropboxusercontent.com/scl/fi/u45nk73w023vqz28sni7a/table-1.jpg?rlkey=9bfpp1z2apsye8j1pat5e1e5i&st=h8r8plu4" class="rotation-frame" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0;">
+            <img src="https://dl.dropboxusercontent.com/scl/fi/2siep9t9428x7vpfxzdu0/table-2.jpg?rlkey=yl34fzhkqlb2n8uelsncaxb6x&st=9u8m3opf" class="rotation-frame" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0;">
+            <img src="https://dl.dropboxusercontent.com/scl/fi/r24kr682yjlwcerisqttx/table-3.jpg?rlkey=ciqsx95vi8ahb3ey4ffqxait3&st=ar4mki5h" class="rotation-frame" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0;">
+            <img src="https://dl.dropboxusercontent.com/scl/fi/fr6pp4tqq6smrpri8c11n/table-4.jpg?rlkey=a9u1xrf8g12eozcct1zvfbyoh&st=vfvkm2g4" class="rotation-frame" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0;">
+        </div>
     </div>
+    
+    <div style="max-width: 80%; margin: 40px auto; padding: 0 20px;">
+        <div style="border-top: 1px solid #000000; padding-top: 15px;">
+            <div onclick="toggleDescription()" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; border-bottom: 1px solid #000000; font-family: 'BNMagnique', sans-serif;">
+                <span style="font-size: 14px; font-weight: normal; color: #000000;">Description</span>
+                <span id="toggleIcon" style="font-size: 20px; color: #000000;">+</span>
+            </div>
+            <div id="descriptionContent" style="display: none; padding-top: 20px; font-family: 'BNMagnique', sans-serif;">
+                <p style="font-size: 16px; line-height: 1.6; color: #000000; text-align: left; margin-bottom: 15px;">Description for table goes here.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Images moved to bottom -->
+    <div class="image-gallery" style="flex-wrap: wrap; justify-content: center; max-width: 95%; margin: 40px auto 60px; text-align: center;">
+        <div class="table-img-wrapper" onclick="openLightbox(0)">
+            <img src="https://dl.dropboxusercontent.com/scl/fi/u45nk73w023vqz28sni7a/table-1.jpg?rlkey=9bfpp1z2apsye8j1pat5e1e5i&st=h8r8plu4" alt="Table 1">
+        </div>
+        <div class="table-img-wrapper" onclick="openLightbox(1)">
+            <img src="https://dl.dropboxusercontent.com/scl/fi/2siep9t9428x7vpfxzdu0/table-2.jpg?rlkey=yl34fzhkqlb2n8uelsncaxb6x&st=9u8m3opf" alt="Table 2">
+        </div>
+        <div class="table-img-wrapper" onclick="openLightbox(2)">
+            <img src="https://dl.dropboxusercontent.com/scl/fi/r24kr682yjlwcerisqttx/table-3.jpg?rlkey=ciqsx95vi8ahb3ey4ffqxait3&st=ar4mki5h" alt="Table 3">
+        </div>
+        <div class="table-img-wrapper" onclick="openLightbox(3)">
+            <img src="https://dl.dropboxusercontent.com/scl/fi/fr6pp4tqq6smrpri8c11n/table-4.jpg?rlkey=a9u1xrf8g12eozcct1zvfbyoh&st=vfvkm2g4" alt="Table 4">
+        </div>
+    </div>
+    
+    <!-- Lightbox Modal with slideshow -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content">
+            <span class="lightbox-nav lightbox-prev" onclick="changeSlide(-1)">&#10094;</span>
+            <img id="lightbox-img" src="" alt="Full size image">
+            <span class="lightbox-nav lightbox-next" onclick="changeSlide(1)">&#10095;</span>
+        </div>
+    </div>
+    
+    <script>
+        const tableImages = [
+            "https://dl.dropboxusercontent.com/scl/fi/u45nk73w023vqz28sni7a/table-1.jpg?rlkey=9bfpp1z2apsye8j1pat5e1e5i&st=h8r8plu4",
+            "https://dl.dropboxusercontent.com/scl/fi/2siep9t9428x7vpfxzdu0/table-2.jpg?rlkey=yl34fzhkqlb2n8uelsncaxb6x&st=9u8m3opf",
+            "https://dl.dropboxusercontent.com/scl/fi/r24kr682yjlwcerisqttx/table-3.jpg?rlkey=ciqsx95vi8ahb3ey4ffqxait3&st=ar4mki5h",
+            "https://dl.dropboxusercontent.com/scl/fi/fr6pp4tqq6smrpri8c11n/table-4.jpg?rlkey=a9u1xrf8g12eozcct1zvfbyoh&st=vfvkm2g4"
+        ];
+        
+        let currentSlideIndex = 0;
+        
+        function toggleDescription() {
+            const content = document.getElementById('descriptionContent');
+            const icon = document.getElementById('toggleIcon');
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+                icon.textContent = '−';
+            } else {
+                content.style.display = 'none';
+                icon.textContent = '+';
+            }
+        }
+        
+        function openLightbox(index) {
+            currentSlideIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = tableImages[currentSlideIndex];
+            lightbox.style.display = 'flex';
+        }
+        
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+        }
+        
+        function changeSlide(direction) {
+            currentSlideIndex += direction;
+            if (currentSlideIndex < 0) {
+                currentSlideIndex = tableImages.length - 1;
+            } else if (currentSlideIndex >= tableImages.length) {
+                currentSlideIndex = 0;
+            }
+            document.getElementById('lightbox-img').src = tableImages[currentSlideIndex];
+        }
+        
+        // Close lightbox when clicking outside the image
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.style.display === 'flex') {
+                if (e.key === 'ArrowLeft') {
+                    changeSlide(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeSlide(1);
+                } else if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+            }
+        });
+        
+        // Rotating table animation
+        const frames = document.querySelectorAll('.rotation-frame');
+        let currentFrame = 0;
+        
+        function rotateFrames() {
+            frames.forEach((frame, index) => {
+                frame.style.opacity = index === currentFrame ? '1' : '0';
+            });
+            currentFrame = (currentFrame + 1) % frames.length;
+        }
+        
+        // Start animation
+        rotateFrames();
+        setInterval(rotateFrames, 500); // Change frame every 500ms
+    </script>
+    
     <button class="back-btn" onclick="window.location.href='portfolio.html'">Back</button>
 </body>
 </html>
