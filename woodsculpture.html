@@ -149,11 +149,11 @@
     <!-- Lightbox Modal with slideshow -->
     <div class="lightbox" id="lightbox">
         <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <span class="lightbox-nav lightbox-prev" onclick="changeSlide(-1)">&#10094;</span>
         <div class="lightbox-content">
-            <span class="lightbox-nav lightbox-prev" onclick="changeSlide(-1)">&#10094;</span>
             <img id="lightbox-img" src="" alt="Full size image">
-            <span class="lightbox-nav lightbox-next" onclick="changeSlide(1)">&#10095;</span>
         </div>
+        <span class="lightbox-nav lightbox-next" onclick="changeSlide(1)">&#10095;</span>
     </div>
     
     <script>
