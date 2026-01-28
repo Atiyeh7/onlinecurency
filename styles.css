@@ -608,7 +608,8 @@ body.portfolio-page {
     .would-you-rather-game {
         width: 90%;
         max-width: 400px;
-        margin: 200vh auto 20px;
+        margin: 200vh auto 0;
+        padding: 0 0 20px 0;
     }
     
     .option-btn {
