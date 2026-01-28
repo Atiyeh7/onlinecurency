@@ -5,10 +5,182 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lamp</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #EEEEEE;
+            font-family: 'BNMagnique', sans-serif;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gif-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .rotating-gif {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .image-gallery img {
+            width: 31%;
+            margin: 1%;
+            display: inline-block;
+            vertical-align: top;
+            height: auto;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .images-grid img:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .image-gallery img {
+                width: 98%;
+            }
+        }
+    </style>
 </head>
-<body style="background-color: #EEEEEE; font-family: 'BNMagnique', sans-serif;">
-    <h1>Lamp</h1>
-    <p>No images available.</p>
+<body>
+    <h1 style="color: #253900; font-size: 12vw; text-align: center; margin: 20px auto 10px; padding: 0 10px; white-space: nowrap;">Lamp</h1>
+    <p style="text-align: center; font-size: 18px; margin: 30px auto 20px; color: #000000;">Douglas fir, Hinge, Light Bulb, 2024</p>
+
+    <!-- Rotating GIF Section -->
+    <div class="gif-container">
+        <img id="rotatingImage" class="rotating-gif" src="https://dl.dropboxusercontent.com/scl/fi/485gxxd9awb90py7t82z4/Lamp-9.jpg?rlkey=hzrxwdxoyw6mhdobzov0x2k8k&st=5rinjsut" alt="Lamp">
+    </div>
+
+    <!-- Description Section -->
+    <div style="max-width: 80%; margin: 40px auto; padding: 0 20px;">
+        <div style="border-top: 1px solid #000000; padding-top: 15px;">
+            <div onclick="toggleDescription()" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; border-bottom: 1px solid #000000; font-family: 'BNMagnique', sans-serif;">
+                <span style="font-size: 14px; font-weight: normal; color: #000000;">Description</span>
+                <span id="toggleIcon" style="font-size: 20px; color: #000000;">+</span>
+            </div>
+            <div id="descriptionContent" style="display: none; padding-top: 20px; font-family: 'BNMagnique', sans-serif;">
+                <p style="font-size: 16px; line-height: 1.6; color: #000000; text-align: left; margin-bottom: 15px;">A collection showcasing the Lamp artwork from various angles and perspectives.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Images Section -->
+    <div class="image-gallery" style="flex-wrap: wrap; justify-content: center; max-width: 95%; margin: 40px auto; text-align: center;">
+        <img src="https://dl.dropboxusercontent.com/scl/fi/485gxxd9awb90py7t82z4/Lamp-9.jpg?rlkey=hzrxwdxoyw6mhdobzov0x2k8k&st=5rinjsut" alt="Lamp 9" onclick="openLightbox(0)">
+        <img src="https://dl.dropboxusercontent.com/scl/fi/25seap5b1c75wfb1z52vq/Lamp-8.jpg?rlkey=z1topbemn6cs5th1ghq7bp91c&st=pva1hhof" alt="Lamp 8" onclick="openLightbox(1)">
+        <img src="https://dl.dropboxusercontent.com/scl/fi/gy981fqb0rwnml7lbuqck/lamp-7.jpg?rlkey=hxxdygea3pb2v4mf7g0jtdqdt&st=hlk3fcjk" alt="Lamp 7" onclick="openLightbox(2)">
+        <img src="https://dl.dropboxusercontent.com/scl/fi/nts6tyuw3k3xfk3e6vuxz/Lamp-6.jpg?rlkey=w6e53cb759ldloudepdhgx4ok&st=4fgm1b2n" alt="Lamp 6" onclick="openLightbox(3)">
+        <img src="https://dl.dropboxusercontent.com/scl/fi/8wybx5itdl46ernyv64gt/Lamp-5.jpg?rlkey=bfzezhxr8po8ojtsvanjs492i&st=f6uz4pdi" alt="Lamp 5" onclick="openLightbox(4)">
+        <img src="https://dl.dropboxusercontent.com/scl/fi/aopq59vkrzr5eai2xktvz/Lamp-4.jpg?rlkey=5piq17bsj04gmcffwddk73oc9&st=hdbc5hs1" alt="Lamp 4" onclick="openLightbox(5)">
+        <img src="https://dl.dropboxusercontent.com/scl/fi/btlplse530ydgouja97ck/Lamp-3.jpg?rlkey=y4xwr25ooyno42yefe0zcrp8c&st=xnb8k4ac" alt="Lamp 3" onclick="openLightbox(6)">
+        <img src="https://dl.dropboxusercontent.com/scl/fi/lwroxuh5jwpt3li0eliuk/Lamp-2.jpg?rlkey=dxaqp3cz0ry5avwpw45pol4vw&st=nxq03tb4" alt="Lamp 2" onclick="openLightbox(7)">
+        <img src="https://dl.dropboxusercontent.com/scl/fi/hsa5b7j2zebhi0q6xczlm/Lamp-1.jpg?rlkey=jol5cydhbqwj99b4b04ce70a4&st=h47utb0l" alt="Lamp 1" onclick="openLightbox(8)">
+    </div>
+
     <button class="back-btn" onclick="window.location.href='portfolio.html'">Back</button>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <a class="prev" onclick="changeImage(-1)">&#10094;</a>
+        <a class="next" onclick="changeImage(1)">&#10095;</a>
+    </div>
+
+    <script>
+        // Rotating GIF effect
+        const images = [
+            'https://dl.dropboxusercontent.com/scl/fi/485gxxd9awb90py7t82z4/Lamp-9.jpg?rlkey=hzrxwdxoyw6mhdobzov0x2k8k&st=5rinjsut',
+            'https://dl.dropboxusercontent.com/scl/fi/25seap5b1c75wfb1z52vq/Lamp-8.jpg?rlkey=z1topbemn6cs5th1ghq7bp91c&st=pva1hhof',
+            'https://dl.dropboxusercontent.com/scl/fi/gy981fqb0rwnml7lbuqck/lamp-7.jpg?rlkey=hxxdygea3pb2v4mf7g0jtdqdt&st=hlk3fcjk',
+            'https://dl.dropboxusercontent.com/scl/fi/nts6tyuw3k3xfk3e6vuxz/Lamp-6.jpg?rlkey=w6e53cb759ldloudepdhgx4ok&st=4fgm1b2n',
+            'https://dl.dropboxusercontent.com/scl/fi/8wybx5itdl46ernyv64gt/Lamp-5.jpg?rlkey=bfzezhxr8po8ojtsvanjs492i&st=f6uz4pdi',
+            'https://dl.dropboxusercontent.com/scl/fi/aopq59vkrzr5eai2xktvz/Lamp-4.jpg?rlkey=5piq17bsj04gmcffwddk73oc9&st=hdbc5hs1',
+            'https://dl.dropboxusercontent.com/scl/fi/btlplse530ydgouja97ck/Lamp-3.jpg?rlkey=y4xwr25ooyno42yefe0zcrp8c&st=xnb8k4ac',
+            'https://dl.dropboxusercontent.com/scl/fi/lwroxuh5jwpt3li0eliuk/Lamp-2.jpg?rlkey=dxaqp3cz0ry5avwpw45pol4vw&st=nxq03tb4',
+            'https://dl.dropboxusercontent.com/scl/fi/hsa5b7j2zebhi0q6xczlm/Lamp-1.jpg?rlkey=jol5cydhbqwj99b4b04ce70a4&st=h47utb0l'
+        ];
+
+        let currentIndex = 0;
+        const rotatingImage = document.getElementById('rotatingImage');
+
+        function rotateImages() {
+            currentIndex = (currentIndex + 1) % images.length;
+            rotatingImage.src = images[currentIndex];
+        }
+
+        setInterval(rotateImages, 500);
+
+        // Description toggle
+        function toggleDescription() {
+            const content = document.getElementById('descriptionContent');
+            const icon = document.getElementById('toggleIcon');
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+                icon.textContent = '−';
+            } else {
+                content.style.display = 'none';
+                icon.textContent = '+';
+            }
+        }
+
+        // Lightbox functionality
+        let currentLightboxIndex = 0;
+        const lightboxImages = [
+            'https://dl.dropboxusercontent.com/scl/fi/485gxxd9awb90py7t82z4/Lamp-9.jpg?rlkey=hzrxwdxoyw6mhdobzov0x2k8k&st=5rinjsut',
+            'https://dl.dropboxusercontent.com/scl/fi/25seap5b1c75wfb1z52vq/Lamp-8.jpg?rlkey=z1topbemn6cs5th1ghq7bp91c&st=pva1hhof',
+            'https://dl.dropboxusercontent.com/scl/fi/gy981fqb0rwnml7lbuqck/lamp-7.jpg?rlkey=hxxdygea3pb2v4mf7g0jtdqdt&st=hlk3fcjk',
+            'https://dl.dropboxusercontent.com/scl/fi/nts6tyuw3k3xfk3e6vuxz/Lamp-6.jpg?rlkey=w6e53cb759ldloudepdhgx4ok&st=4fgm1b2n',
+            'https://dl.dropboxusercontent.com/scl/fi/8wybx5itdl46ernyv64gt/Lamp-5.jpg?rlkey=bfzezhxr8po8ojtsvanjs492i&st=f6uz4pdi',
+            'https://dl.dropboxusercontent.com/scl/fi/aopq59vkrzr5eai2xktvz/Lamp-4.jpg?rlkey=5piq17bsj04gmcffwddk73oc9&st=hdbc5hs1',
+            'https://dl.dropboxusercontent.com/scl/fi/btlplse530ydgouja97ck/Lamp-3.jpg?rlkey=y4xwr25ooyno42yefe0zcrp8c&st=xnb8k4ac',
+            'https://dl.dropboxusercontent.com/scl/fi/lwroxuh5jwpt3li0eliuk/Lamp-2.jpg?rlkey=dxaqp3cz0ry5avwpw45pol4vw&st=nxq03tb4',
+            'https://dl.dropboxusercontent.com/scl/fi/hsa5b7j2zebhi0q6xczlm/Lamp-1.jpg?rlkey=jol5cydhbqwj99b4b04ce70a4&st=h47utb0l'
+        ];
+
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            document.getElementById('lightbox').style.display = 'block';
+            document.getElementById('lightbox-img').src = lightboxImages[currentLightboxIndex];
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+
+        function changeImage(direction) {
+            currentLightboxIndex += direction;
+            if (currentLightboxIndex < 0) {
+                currentLightboxIndex = lightboxImages.length - 1;
+            } else if (currentLightboxIndex >= lightboxImages.length) {
+                currentLightboxIndex = 0;
+            }
+            document.getElementById('lightbox-img').src = lightboxImages[currentLightboxIndex];
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.style.display === 'block') {
+                if (event.key === 'ArrowLeft') {
+                    changeImage(-1);
+                } else if (event.key === 'ArrowRight') {
+                    changeImage(1);
+                } else if (event.key === 'Escape') {
+                    closeLightbox();
+                }
+            }
+        });
+    </script>
 </body>
 </html>
