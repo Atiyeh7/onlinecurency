@@ -5,14 +5,124 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paper Prints</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .prints-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            max-width: 90%;
+            margin: 20px auto;
+            flex-wrap: wrap;
+        }
+        
+        .prints-container img {
+            max-width: 45%;
+            height: auto;
+            filter: grayscale(20%);
+            transition: transform 0.3s ease, filter 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .prints-container img:hover {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+        
+        @media (max-width: 768px) {
+            .prints-container img {
+                max-width: 90%;
+            }
+        }
+        
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox img {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .lightbox-close:hover {
+            color: #ccc;
+        }
+    </style>
 </head>
-<body style="background-color: #EEEEEE; font-family: 'BNMagnique', sans-serif;">
-    <h1>Paper Prints</h1>
-    <div class="image-gallery">
-        <img src="images/paper prints/DSC_2557.NEF" alt="DSC_2557.NEF">
-        <img src="images/paper prints/DSC_2559.NEF" alt="DSC_2559.NEF">
-        <img src="images/paper prints/DSC_2561.NEF" alt="DSC_2561.NEF">
+<body style="background-color: #EEEEEE; display: block; padding: 20px 0; font-family: 'BNMagnique', sans-serif;">
+    <h1 style="color: #253900; font-size: 12vw; text-align: center; margin: 20px auto 10px; padding: 0 10px; white-space: nowrap;">Jiddo</h1>
+    <p style="text-align: center; font-size: 18px; margin: 30px auto 20px; color: #000000;">11" x 17", Ink on paper</p>
+    
+    <div class="prints-container">
+        <img src="https://dl.dropboxusercontent.com/scl/fi/vx1ew6klrb6wiurgspoy5/Jiddo-Print-2.jpg?rlkey=p0jczrbm287x1xuj706lumxz7&st=97s0qqvm" alt="Jiddo Print 2" onclick="openLightbox(this.src)">
+        <img src="https://dl.dropboxusercontent.com/scl/fi/ohhg2klutgaz832hi959w/Jiddo-Print-1.jpg?rlkey=lw8f2fik31i7yl0jjlqtz2jxt&st=8ghanxmp" alt="Jiddo Print 1" onclick="openLightbox(this.src)">
     </div>
+    
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Full size image">
+    </div>
+    
+    <div style="max-width: 75%; margin: 30px auto; padding: 0 20px;">
+        <div style="border-top: 1px solid #000000; padding-top: 15px;">
+            <div onclick="toggleDescription()" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; border-bottom: 1px solid #000000; font-family: 'BNMagnique', sans-serif;">
+                <span style="font-size: 14px; font-weight: normal; color: #000000;">Description</span>
+                <span id="toggleIcon" style="font-size: 20px; color: #000000;">+</span>
+            </div>
+            <div id="descriptionContent" style="display: none; padding-top: 20px; font-family: 'BNMagnique', sans-serif;">
+                <p style="font-size: 16px; line-height: 1.6; color: #000000; text-align: left; margin-bottom: 15px;">Description for Jiddo prints goes here.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function toggleDescription() {
+            const content = document.getElementById('descriptionContent');
+            const icon = document.getElementById('toggleIcon');
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+        
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = src;
+            lightbox.style.display = 'flex';
+        }
+        
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+        }
+                icon.textContent = '−';
+            } else {
+                content.style.display = 'none';
+                icon.textContent = '+';
+            }
+        }
+    </script>
+    
     <button class="back-btn" onclick="window.location.href='portfolio.html'">Back</button>
 </body>
 </html>
