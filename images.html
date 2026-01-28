@@ -5,15 +5,193 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Images</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .image-gallery {
+            text-align: center;
+            max-width: 95%;
+            margin: 40px auto;
+        }
+
+        .image-gallery img {
+            width: 31%;
+            margin: 1%;
+            display: inline-block;
+            vertical-align: top;
+            height: auto;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .image-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 10001;
+        }
+
+        .lightbox-close:hover {
+            color: #ccc;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 60px;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .image-gallery img {
+                width: 98%;
+            }
+        }
+    </style>
 </head>
-<body style="background-color: #EEEEEE; font-family: 'BNMagnique', sans-serif;">
-    <h1>Images</h1>
+<body style="background-color: #EEEEEE; display: block; padding: 20px 0; font-family: 'BNMagnique', sans-serif;">
+    <h1 style="color: #253900; font-size: 10.5vw; text-align: center; margin: 20px auto 10px; padding: 0 10px; white-space: nowrap;">Ostensibly Faith</h1>
+    <p style="text-align: center; font-size: 18px; margin: 30px auto 10px; color: #000000;">Digital Photo, 2024</p>
+
     <div class="image-gallery">
-        <img src="images/images/prayer project/DSC06971.JPG" alt="DSC06971.JPG">
-        <img src="images/images/prayer project/DSC06974.JPG" alt="DSC06974.JPG">
-        <img src="images/images/prayer project/DSC07194.JPG" alt="DSC07194.JPG">
-        <img src="images/images/prayer project/DSC07207.JPG" alt="DSC07207.JPG">
+        <img src="https://dl.dropboxusercontent.com/scl/fi/22peeklzrx9k0yonovj5o/DSC06974-1.JPG?rlkey=gingse3db3k8bp85dv55tza6b&st=s6s3ljcp" alt="Image 1" onclick="openLightbox(0)">
+        <img src="https://dl.dropboxusercontent.com/scl/fi/wdxtc0dgsb54l8etcxkmy/DSC07193.JPG?rlkey=3xlsrvl2jutzmtx9u24ra8ehk&st=g2je35m4" alt="Image 2" onclick="openLightbox(1)">
+        <img src="https://dl.dropboxusercontent.com/scl/fi/xutf4og4ycwvburi50ifd/DSC07134.JPG?rlkey=z6j3exl62ifhcvq8oa0wb265k&st=pevkaziz" alt="Image 3" onclick="openLightbox(2)">
     </div>
+
+    <div style="max-width: 80%; margin: 40px auto; padding: 0 20px;">
+        <div style="border-top: 1px solid #000000; padding-top: 15px;">
+            <div onclick="toggleDescription()" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; border-bottom: 1px solid #000000; font-family: 'BNMagnique', sans-serif;">
+                <span style="font-size: 14px; font-weight: normal; color: #000000;">Description</span>
+                <span id="toggleIcon" style="font-size: 20px; color: #000000;">+</span>
+            </div>
+            <div id="descriptionContent" style="display: none; padding-top: 20px; font-family: 'BNMagnique', sans-serif;">
+                <p style="font-size: 16px; line-height: 1.6; color: #000000; text-align: left; margin-bottom: 15px;">A collection of photography exploring light, composition, and moments.</p>
+            </div>
+        </div>
+    </div>
+
     <button class="back-btn" onclick="window.location.href='portfolio.html'">Back</button>
+
+    <!-- Lightbox Modal with slideshow -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Lightbox Image">
+            <span class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">&#10094;</span>
+            <span class="lightbox-nav lightbox-next" onclick="changeImage(1)">&#10095;</span>
+        </div>
+    </div>
+
+    <script>
+        // Description toggle
+        function toggleDescription() {
+            const content = document.getElementById('descriptionContent');
+            const icon = document.getElementById('toggleIcon');
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+                icon.textContent = '−';
+            } else {
+                content.style.display = 'none';
+                icon.textContent = '+';
+            }
+        }
+
+        // Lightbox functionality
+        let currentLightboxIndex = 0;
+        const lightboxImages = [
+            'https://dl.dropboxusercontent.com/scl/fi/22peeklzrx9k0yonovj5o/DSC06974-1.JPG?rlkey=gingse3db3k8bp85dv55tza6b&st=s6s3ljcp',
+            'https://dl.dropboxusercontent.com/scl/fi/wdxtc0dgsb54l8etcxkmy/DSC07193.JPG?rlkey=3xlsrvl2jutzmtx9u24ra8ehk&st=g2je35m4',
+            'https://dl.dropboxusercontent.com/scl/fi/xutf4og4ycwvburi50ifd/DSC07134.JPG?rlkey=z6j3exl62ifhcvq8oa0wb265k&st=pevkaziz'
+        ];
+
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            document.getElementById('lightbox').style.display = 'flex';
+            document.getElementById('lightbox-img').src = lightboxImages[currentLightboxIndex];
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+
+        function changeImage(direction) {
+            currentLightboxIndex += direction;
+            if (currentLightboxIndex < 0) {
+                currentLightboxIndex = lightboxImages.length - 1;
+            } else if (currentLightboxIndex >= lightboxImages.length) {
+                currentLightboxIndex = 0;
+            }
+            document.getElementById('lightbox-img').src = lightboxImages[currentLightboxIndex];
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.style.display === 'flex') {
+                if (event.key === 'ArrowLeft') {
+                    changeImage(-1);
+                } else if (event.key === 'ArrowRight') {
+                    changeImage(1);
+                } else if (event.key === 'Escape') {
+                    closeLightbox();
+                }
+            }
+        });
+    </script>
 </body>
 </html>
