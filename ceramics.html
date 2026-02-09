@@ -5,22 +5,186 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ceramics</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #EEEEEE;
+            font-family: 'BNMagnique', sans-serif;
+            padding: 20px 0 20px 0;
+        }
+
+        .ceramics-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 95%;
+            margin: 40px auto;
+        }
+
+        .ceramics-container img {
+            width: 31%;
+            margin: 1%;
+            height: auto;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .ceramics-container img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 10001;
+        }
+
+        .lightbox-close:hover {
+            color: #ccc;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 60px;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .ceramics-container img {
+                width: 90%;
+                margin: 10px auto;
+                display: block;
+            }
+        }
+    </style>
 </head>
-<body style="background-color: #EEEEEE; font-family: 'BNMagnique', sans-serif;">
-    <h1>Ceramics</h1>
-    <div class="image-gallery">
-        <img src="images/ceramics/DSC_2534.NEF" alt="DSC_2534.NEF">
-        <img src="images/ceramics/DSC_2538.NEF" alt="DSC_2538.NEF">
-        <img src="images/ceramics/DSC_2542.NEF" alt="DSC_2542.NEF">
-        <img src="images/ceramics/DSC_2545.NEF" alt="DSC_2545.NEF">
-        <img src="images/ceramics/DSC_2547.NEF" alt="DSC_2547.NEF">
-        <img src="images/ceramics/DSC_2551.NEF" alt="DSC_2551.NEF">
-        <img src="images/ceramics/DSC_2552.NEF" alt="DSC_2552.NEF">
-        <img src="images/ceramics/DSC_2556.NEF" alt="DSC_2556.NEF">
-        <img src="images/ceramics/DSC_2565.NEF" alt="DSC_2565.NEF">
-        <img src="images/ceramics/DSC_2568.NEF" alt="DSC_2568.NEF">
-        <img src="images/ceramics/DSC_2572.NEF" alt="DSC_2572.NEF">
+<body>
+    <h1 style="color: #253900; font-size: 12vw; text-align: center; margin: 20px auto 10px; padding: 0 10px; white-space: nowrap;">Ceramics</h1>
+    <p style="text-align: center; font-size: 18px; margin: 30px auto 20px; color: #000000;">Hand-built ceramic vessels</p>
+
+    <div class="ceramics-container">
+        <img src="https://www.dropbox.com/scl/fi/z88yphxaiyasdrr2mlqzs/Ceramic-1.jpg?rlkey=am4cmwipsbfmc2qz64eljaepw&st=h6uf6grb&dl=1" alt="Ceramic" onclick="openLightbox(0)">
+        <img src="https://www.dropbox.com/scl/fi/8li3tyg7of0ug21sg0xp6/Ceramics-1-flowers.jpg?rlkey=tg92tids8g4j6cr6aqbyf55nc&st=vn1mtoco&dl=1" alt="Ceramics with Flowers" onclick="openLightbox(1)">
+        <img src="https://www.dropbox.com/scl/fi/yfzkvxjk1gyykoaajihe8/Ceramics-2.jpg?rlkey=py7nathmq5unwj2hu29n1dxs2&st=s5lxj2vy&dl=1" alt="Ceramics" onclick="openLightbox(2)">
+        <img src="https://www.dropbox.com/scl/fi/4yij053rudhwou1dawum3/Ceramics-2-flowers.jpg?rlkey=zcpwtqn1t3kzjb42wlq468h1r&st=r4m0ff6a&dl=1" alt="Ceramics with Flowers" onclick="openLightbox(3)">
+        <img src="https://www.dropbox.com/scl/fi/r06a0tlva3y4lj41r9dto/jar-2.jpg?rlkey=zw6tbla26huhk4y6lphuwkits&st=zx0s4d32&dl=1" alt="Jar" onclick="openLightbox(4)">
+        <img src="https://www.dropbox.com/scl/fi/pr1mcg8uqgjqq3jnqq05h/Jar-1.jpg?rlkey=9onj7h35361vsm7ksduol40tt&st=o411xa8c&dl=1" alt="Jar" onclick="openLightbox(5)">
     </div>
+
     <button class="back-btn" onclick="window.location.href='portfolio.html'">Back</button>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <span class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">&#10094;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Full size image">
+        </div>
+        <span class="lightbox-nav lightbox-next" onclick="changeImage(1)">&#10095;</span>
+    </div>
+
+    <script>
+        // Lightbox functionality
+        let currentLightboxIndex = 0;
+        const lightboxImages = [
+            'https://www.dropbox.com/scl/fi/z88yphxaiyasdrr2mlqzs/Ceramic-1.jpg?rlkey=am4cmwipsbfmc2qz64eljaepw&st=h6uf6grb&dl=1',
+            'https://www.dropbox.com/scl/fi/8li3tyg7of0ug21sg0xp6/Ceramics-1-flowers.jpg?rlkey=tg92tids8g4j6cr6aqbyf55nc&st=vn1mtoco&dl=1',
+            'https://www.dropbox.com/scl/fi/yfzkvxjk1gyykoaajihe8/Ceramics-2.jpg?rlkey=py7nathmq5unwj2hu29n1dxs2&st=s5lxj2vy&dl=1',
+            'https://www.dropbox.com/scl/fi/4yij053rudhwou1dawum3/Ceramics-2-flowers.jpg?rlkey=zcpwtqn1t3kzjb42wlq468h1r&st=r4m0ff6a&dl=1',
+            'https://www.dropbox.com/scl/fi/r06a0tlva3y4lj41r9dto/jar-2.jpg?rlkey=zw6tbla26huhk4y6lphuwkits&st=zx0s4d32&dl=1',
+            'https://www.dropbox.com/scl/fi/pr1mcg8uqgjqq3jnqq05h/Jar-1.jpg?rlkey=9onj7h35361vsm7ksduol40tt&st=o411xa8c&dl=1'
+        ];
+
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            document.getElementById('lightbox').style.display = 'flex';
+            document.getElementById('lightbox-img').src = lightboxImages[currentLightboxIndex];
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+
+        function changeImage(direction) {
+            currentLightboxIndex += direction;
+            if (currentLightboxIndex < 0) {
+                currentLightboxIndex = lightboxImages.length - 1;
+            } else if (currentLightboxIndex >= lightboxImages.length) {
+                currentLightboxIndex = 0;
+            }
+            document.getElementById('lightbox-img').src = lightboxImages[currentLightboxIndex];
+        }
+
+        // Close lightbox when clicking on background
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.style.display === 'flex') {
+                if (event.key === 'ArrowLeft') {
+                    changeImage(-1);
+                } else if (event.key === 'ArrowRight') {
+                    changeImage(1);
+                } else if (event.key === 'Escape') {
+                    closeLightbox();
+                }
+            }
+        });
+    </script>
 </body>
 </html>
