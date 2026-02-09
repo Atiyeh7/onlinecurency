@@ -122,6 +122,11 @@ body.portfolio-page {
     top: 120vh;
     animation-delay: 1.8s; 
 }
+.folder-icon:nth-child(8) { 
+    right: 25%;
+    top: 140vh;
+    animation-delay: 2.1s; 
+}
 
 .folder-icon svg {
     width: 50px;
@@ -483,7 +488,7 @@ body.portfolio-page {
 /* Would You Rather Game Styles */
 .would-you-rather-game {
     position: relative;
-    margin: 200vh auto 20px;
+    margin: 300vh auto 20px;
     width: 500px;
     padding: 0;
 }
